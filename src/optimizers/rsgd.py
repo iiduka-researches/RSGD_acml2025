@@ -48,8 +48,8 @@ class RSGD(Optimizer):
 
         for k in tqdm(range(max_itr)):
             start_time = time()
-            grad = problem.minibatch_grad(point, int(self.bs(k))) # calculate minibatch grad
-            d_p = -self.lr(k) * grad # __call__: self.lr(k)
+            grad = problem.minibatch_grad(point, int(self.bs(k)))
+            d_p = -self.lr(k) * grad 
             point = problem.manifold.retraction(point, d_p)
             end_time = time()
 
